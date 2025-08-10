@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <title>ChemQC - Precision Laboratory Data Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #e5e7eb;
+            background-color: #0f172a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #f8fafc, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-image {
+            max-width: 800px;
+            width: 100%;
+            height: 400px;
+            margin: 2rem auto 2.5rem;
+            background: linear-gradient(45deg, #1e293b, #334155);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background-color: #1e293b;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            color: #f8fafc;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #f8fafc;
+        }
+
+        .feature-card p {
+            color: #94a3b8;
+        }
+
+        /* Showcase Section */
+        .showcase {
+            padding: 6rem 0;
+            background-color: #0f172a;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .showcase-item {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .showcase-item:hover {
+            transform: scale(1.02);
+        }
+
+        .showcase-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #1e293b, #334155);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            object-fit: cover;
+        }
+
+        .showcase-image:hover {
+            opacity: 0.8;
+        }
+
+        .showcase-content {
+            padding: 1.5rem;
+        }
+
+        .showcase-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #f8fafc;
+        }
+
+        .showcase-content p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Lightbox Modal */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: lightboxFadeIn 0.3s ease-out;
+        }
+
+        @keyframes lightboxFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: calc(90vh - 100px);
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+        }
+
+        .lightbox-title {
+            color: #f8fafc;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .lightbox-description {
+            color: #94a3b8;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            color: #e5e7eb;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox-close:hover {
+            background: rgba(59, 130, 246, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #f8fafc;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: #3b82f6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .lightbox-close {
+                top: -40px;
+                right: -10px;
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+
+            .lightbox-title {
+                font-size: 1.1rem;
+            }
+
+            .lightbox-description {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">ChemQC</div>
+            <ul class="nav-links">
+                <li><a href="#features">Product</a></li>
+                <li><a href="#showcase">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="mailto:Slotfi909@gmail.com?subject=Schedule Demo Request" class="cta-button">Schedule Demo</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Precision Meets Efficiency</h1>
+            <p>Transform your manufacturing laboratory operations with offline data management software that delivers the precision and efficiency your quality control processes demand.</p>
+            <img class="hero-image" src="./img/main.png" alt="ChemQC Dashboard Interface Preview"/>
+            <a href="mailto:Slotfi909@gmail.com?subject=Demo Request" class="cta-button">Request Demo</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Built for Laboratory Excellence</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Database cylinders -->
+                            <ellipse cx="12" cy="4" rx="8" ry="2" fill="currentColor" opacity="0.2"/>
+                            <path d="M4 4v4c0 1.1 3.6 2 8 2s8-0.9 8-2V4" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <ellipse cx="12" cy="4" rx="8" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                            
+                            <ellipse cx="12" cy="12" rx="8" ry="2" fill="currentColor" opacity="0.1"/>
+                            <path d="M4 12v4c0 1.1 3.6 2 8 2s8-0.9 8-2v-4" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <ellipse cx="12" cy="12" rx="8" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                            
+                            <ellipse cx="12" cy="20" rx="8" ry="2" fill="currentColor" opacity="0.05"/>
+                            <ellipse cx="12" cy="20" rx="8" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Database Management</h3>
+                    <p>Create and manage multiple databases to organize your laboratory data by year, product line, or department, ensuring optimal performance and streamlined data separation for growing operations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                    </div>
+                    <h3>Custom Feature Development</h3>
+                    <p>Our development team adapts the software to your unique laboratory workflows, ensuring perfect alignment with your specific operational requirements.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14,2 14,8 20,8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10,9 9,9 8,9"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Automated Backup</h3>
+                    <p>Protect your critical laboratory data with automatic local backups at custom intervals, ensuring zero data loss without internet dependency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section class="showcase" id="showcase">
+        <div class="container">
+            <h2 class="section-title">See ChemQC in Action</h2>
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <img class="showcase-image" alt="Instant Data Retrieval" src="./img/retrieval.png" data-lightbox-title="Instant Data Retrieval" data-lightbox-description="Find any test result or material data within seconds using our advanced search algorithms and intuitive interface."/>
+                    <div class="showcase-content">
+                        <h4>Instant Data Retrieval</h4>
+                        <p>Find any test result or material data within seconds.</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img class="showcase-image" alt="Advanced Analytics" src="./img/advanced.png" data-lightbox-title="Advanced Analytics" data-lightbox-description="Generate detailed graphs and tabular reports from search results with customizable parameters and export options."/>
+                    <div class="showcase-content">
+                        <h4>Advanced Analytics</h4>
+                        <p>Generate detailed graphs and tabular reports from search results.</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img class="showcase-image" alt="Custom Test Definition" src="./img/test.png" data-lightbox-title="Custom Test Definition" data-lightbox-description="Easily create new testing methods like MFI ISO standards with flexible parameter configuration."/>
+                    <div class="showcase-content">
+                        <h4>Custom Test Definition</h4>
+                        <p>Easily create new testing methods like MFI ISO standards.</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img class="showcase-image" alt="Quick Data Entry" src="./img/recording.png" data-lightbox-title="Quick Data Entry" data-lightbox-description="Fast storage system for raw materials and finished products with batch processing capabilities."/>
+                    <div class="showcase-content">
+                        <h4>Quick Data Entry</h4>
+                        <p>Fast storage system for raw materials and finished products.</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img class="showcase-image" alt="Role-Based Access Control" src="./img/settings.png" data-lightbox-title="Role-Based Access Control" data-lightbox-description="Three user permission levels ensure proper data security management with granular access controls."/>
+                    <div class="showcase-content">
+                        <h4>Role-Based Access Control</h4>
+                        <p>Three user permission levels ensure proper data security management.</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <img class="showcase-image" alt="Export Flexibility" src="./img/report.png" data-lightbox-title="Export Flexibility" data-lightbox-description="Export reports as images, spreadsheets, or PDFs instantly with customizable formatting options."/>
+                    <div class="showcase-content">
+                        <h4>Export Flexibility</h4>
+                        <p>Export reports as images, spreadsheets, or PDFs instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-overlay" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <img class="lightbox-image" id="lightbox-image" src="" alt="">
+            <h3 class="lightbox-title" id="lightbox-title"></h3>
+            <p class="lightbox-description" id="lightbox-description"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Schedule a Business Meeting</h4>
+                    <a href="mailto:Slotfi909@gmail.com">Slotfi909@gmail.com</a>
+                    <a href="tel:+989395866475">+98 939 586 6475</a>
+                    <a href="https://t.me/lsorooshl">Telegram: @lsorooshl</a>
+                    <p>Isfahan, Iran</p>
+                </div>
+                <div class="footer-section">
+                    <h4>ChemQC</h4>
+                    <p>Enterprise laboratory data management solution designed for manufacturing excellence and operational precision.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            const lightboxDescription = document.getElementById('lightbox-description');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const showcaseImages = document.querySelectorAll('.showcase-image');
+
+            // Open lightbox when showcase image is clicked
+            showcaseImages.forEach(function(image) {
+                image.addEventListener('click', function() {
+                    const src = this.src;
+                    const title = this.getAttribute('data-lightbox-title');
+                    const description = this.getAttribute('data-lightbox-description');
+
+                    lightboxImage.src = src;
+                    lightboxImage.alt = this.alt;
+                    lightboxTitle.textContent = title;
+                    lightboxDescription.textContent = description;
+                    
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // Close lightbox when close button is clicked
+            lightboxClose.addEventListener('click', function() {
+                closeLightbox();
+            });
+
+            // Close lightbox when clicking outside the image
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            // Close lightbox when pressing Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>
