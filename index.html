@@ -109,19 +109,32 @@
         }
 
         .hero-image {
-            max-width: 800px;
+            max-width: 100%;
             width: 100%;
-            height: 400px;
+            height: auto;
+            min-height: 250px;
             margin: 2rem auto 2.5rem;
             background: linear-gradient(45deg, #1e293b, #334155);
             border: 1px solid rgba(148, 163, 184, 0.2);
             border-radius: 12px;
+            display: block;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+
+        /* Fallback for when image doesn't load */
+        .hero-image:not([src]), .hero-image[src=""] {
             display: flex;
             align-items: center;
             justify-content: center;
             color: #64748b;
             font-size: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            height: 400px;
+            min-height: 250px;
+        }
+
+        .hero-image:not([src])::after, .hero-image[src=""]::after {
+            content: "ChemQC Dashboard Interface Preview";
         }
 
         /* Features Section */
@@ -372,6 +385,21 @@
                 font-size: 2.5rem;
             }
 
+            .hero p {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+
+            .hero-image {
+                margin: 1.5rem auto 2rem;
+                min-height: 200px;
+            }
+
+            .hero-image:not([src]), .hero-image[src=""] {
+                height: 250px;
+                min-height: 200px;
+            }
+
             .container {
                 padding: 0 1rem;
             }
@@ -389,6 +417,56 @@
             }
 
             .lightbox-description {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 6rem 0 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-image {
+                margin: 1rem auto 1.5rem;
+                min-height: 180px;
+            }
+
+            .hero-image:not([src]), .hero-image[src=""] {
+                height: 200px;
+                min-height: 180px;
+                font-size: 0.9rem;
+            }
+
+            .nav {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .cta-button {
+                padding: 0.5rem 1rem;
                 font-size: 0.9rem;
             }
         }
