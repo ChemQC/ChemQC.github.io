@@ -234,3 +234,28 @@ header > .collapsible-header{
     }
     
 }
+
+/* features section */
+.showcase-item {
+    transition: all 0.3s ease;
+}
+
+.showcase-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(126, 34, 206, 0.2);
+}
+
+.lightbox-content {
+    animation: lightboxFadeIn 0.3s ease;
+}
+
+@keyframes lightboxFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

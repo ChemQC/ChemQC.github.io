@@ -140,3 +140,77 @@ sections.forEach((sec) => {
 
 
 })
+
+// features section
+// Lightbox functionality for feature showcases
+function initShowcaseLightbox() {
+    const showcaseItems = document.querySelectorAll('.showcase-item');
+    
+    showcaseItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            const img = this.querySelector('.showcase-image');
+            const title = img.getAttribute('data-lightbox-title');
+            const description = img.getAttribute('data-lightbox-description');
+            
+            // Create lightbox overlay
+            const lightbox = document.createElement('div');
+            lightbox.className = 'lightbox-overlay';
+            lightbox.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.9);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                padding: 20px;
+                cursor: pointer;
+            `;
+            
+            // Lightbox content
+            lightbox.innerHTML = `
+                <div class="lightbox-content" style="max-width: 800px; max-height: 90vh; overflow-y: auto;">
+                    <img src="${img.src}" alt="${img.alt}" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 20px;">
+                    <div style="color: white; text-align: center;">
+                        <h3 style="font-size: 2rem; margin-bottom: 1rem; color: #e5e7eb;">${title}</h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6; color: #d1d5db;">${description}</p>
+                    </div>
+                </div>
+                <button class="close-lightbox" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer;">×</button>
+            `;
+            
+            document.body.appendChild(lightbox);
+            
+            // Close lightbox functions
+            const closeLightbox = () => {
+                document.body.removeChild(lightbox);
+            };
+            
+            lightbox.querySelector('.close-lightbox').addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+            
+            // Close with ESC key
+            const handleEscKey = (e) => {
+                if (e.key === 'Escape') closeLightbox();
+            };
+            document.addEventListener('keydown', handleEscKey);
+            
+            // Cleanup event listener
+            lightbox.addEventListener('click', function cleanup() {
+                document.removeEventListener('keydown', handleEscKey);
+                lightbox.removeEventListener('click', cleanup);
+            });
+        });
+    });
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initShowcaseLightbox();
+});
