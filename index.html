@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>ChemQC - Precision Laboratory Data Management</title>
+	<meta name="ChemQC" content="ChemQC introduction, LIMS system for storing test results of polymer plants" />
+	<link rel="shortcut icon" href="./assets/logo/logo.png" type="image/x-icon" />
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:title" content="ChemQC - Precision Laboratory Data Management" />
+	<meta property="og:description"
+		content="a software solution based on LIMS systems for storing test results of polymer plants" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://ChemQC.ir" />
+	<!--Replace with the current website url-->
+	<meta property="og:image" content="" />
+
+	<!-- <link rel="stylesheet" href="../../tailwind-css/tailwind-runtime.css" /> -->
+	<link rel="stylesheet" href="./css/tailwind-build.css">
+	<link rel="stylesheet" href="css/index.css" />
+
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+		integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-black tw-text-white">
+	<header
+		class="tw-max-w-lg:tw-px-4 tw-max-w-lg:tw-mr-auto tw-absolute tw-top-0 tw-z-20 tw-flex tw-h-[60px] tw-w-full tw-bg-opacity-0 tw-px-[5%] lg:tw-justify-around">
+		<a class="tw-h-[50px] tw-w-[50px] tw-p-[4px]" href="">
+			<img src="./assets/logo/logo.png" alt="logo" class="tw-object tw-h-full tw-w-full" />
+		</a>
+		<div class="collapsible-header animated-collapse max-lg:tw-shadow-md" id="collapsed-header-items">
+			<div
+				class="tw-flex tw-h-full tw-w-max tw-gap-5 tw-text-base max-lg:tw-mt-[30px] max-lg:tw-flex-col max-lg:tw-place-items-end max-lg:tw-gap-5 lg:tw-mx-auto lg:tw-place-items-center">
+				<a class="header-links" href="#intro">Introduction</a>
+				<a class="header-links" href="#action">ChemQC In Action</a>
+				<a class="header-links" href="#faq">FAQ</a>
+				<a class="header-links" href="#about">About Us</a>
+			</div>
+			<div
+				class="tw-mx-4 tw-flex tw-place-items-center tw-gap-[20px] tw-text-base max-md:tw-w-full max-md:tw-flex-col max-md:tw-place-content-center">
+
+			</div>
+		</div>
+		<button class="bi bi-list tw-absolute tw-right-3 tw-top-3 tw-z-50 tw-text-3xl tw-text-white lg:tw-hidden"
+			onclick="toggleHeader()" aria-label="menu" id="collapse-btn"></button>
+	</header>
+
+	<section class="hero-section tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-overflow-hidden max-md:tw-mt-[50px]"
+		id="hero-section">
+		<div
+			class="tw-flex tw-h-full tw-min-h-[100vh] tw-w-full tw-flex-col tw-place-content-center tw-gap-6 tw-p-[5%] max-xl:tw-place-items-center max-lg:tw-p-4">
+			<div class="tw-flex tw-flex-col tw-place-content-center tw-items-center">
+				<div
+					class="reveal-up gradient-text tw-text-center tw-text-6xl tw-font-semibold tw-uppercase tw-leading-[80px] max-lg:tw-text-4xl max-md:tw-leading-snug">
+					<span class="">ChemQC</span>
+					<br />
+					<span class="">Precision Meets Efficiency</span>
+				</div>
+				<div
+					class="reveal-up tw-mt-10 tw-max-w-[450px] tw-p-2 tw-text-center tw-text-gray-300 max-lg:tw-max-w-full">
+					Transform your manufacturing laboratory operations with offline data management
+					software that delivers the precision and efficiency your quality control
+					processes demand.</div>
+
+				<div class="reveal-up tw-mt-10 tw-flex tw-place-items-center tw-gap-4">
+					<a class="btn tw-bg-[#7e22ce85] tw-shadow-lg tw-shadow-primary tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.03]"
+						href="mailto:Slotfi909@gmail.com?subject=Schedule Demo Request">Request
+						Demo</a>
+
+				</div>
+			</div>
+
+			<div class="reveal-up tw-relative tw-mt-8 tw-flex tw-w-full tw-place-content-center tw-place-items-center"
+				id="dashboard-container">
+				<div class="tw-relative tw-max-w-[80%] tw-overflow-hidden tw-rounded-xl tw-bg-transparent max-md:tw-max-w-full"
+					id="dashboard">
+					<img src="./assets/img/main.png" alt="main image"
+						class="tw-h-full tw-w-full tw-object-cover tw-opacity-90 max-lg:tw-object-contain" />
+				</div>
+
+				<div
+					class="hero-img-bg-grad tw-absolute tw-left-[20%] tw-top-5 tw-h-[200px] tw-w-[200px]">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="intro"
+		class="tw-relative tw-flex tw-min-h-[80vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6">
+		<div class="tw-mt-8 tw-flex tw-flex-col tw-place-items-center tw-gap-5">
+			<div class="reveal-up tw-mt-5 tw-flex tw-flex-col tw-gap-3 tw-text-center">
+				<h2 class="tw-text-4xl tw-font-medium tw-text-gray-200 max-md:tw-text-2xl">
+					The Polymer Testing Challenge
+				</h2>
+				<p class="tw-text-xl tw-text-gray-300 max-md:tw-text-lg">
+					Transforming complex polymer testing data into actionable insights
+				</p>
+			</div>
+
+			<!-- VERTICAL STACK WITH CARD VISUALS -->
+			<div
+				class="tw-mt-6 tw-flex tw-max-w-[80%] tw-flex-col tw-place-content-center tw-gap-12 max-lg:tw-max-w-full">
+
+				<!-- PROBLEM - Top -->
+				<div
+					class="reveal-up tw-flex tw-w-full tw-gap-8 tw-place-items-center max-lg:tw-flex-col">
+					<div class="tw-flex-shrink-0 tw-text-center max-lg:tw-mb-4">
+						<div
+							class="border-gradient tw-h-[200px] tw-w-[200px] tw-overflow-hidden tw-rounded-lg max-md:tw-h-[150px] max-md:tw-w-[150px]">
+							<div
+								class="tw-flex tw-h-full tw-w-full tw-place-content-center tw-place-items-center tw-p-2">
+								<i
+									class="bi bi-clipboard-x-fill tw-text-7xl tw-text-gray-200 max-md:tw-text-5xl"></i>
+							</div>
+						</div>
+					</div>
+					<div class="tw-flex tw-flex-col tw-gap-4">
+						<h3
+							class="tw-text-3xl tw-font-normal tw-text-gray-200 max-md:tw-text-2xl">
+							The
+							Problem</h3>
+						<div class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+							Polymer plants struggle with storing manual testing processes
+							(MFI, OIT,
+							Yield
+							Stress)
+							using pen and paper, creating unstructured data that's difficult
+							to
+							manage,
+							analyze, and scale. This leads to inefficiencies, errors, and
+							missed
+							insights.
+						</div>
+					</div>
+				</div>
+
+				<!-- SOLUTION - Middle -->
+				<div
+					class="reveal-up tw-flex tw-w-full tw-gap-8 tw-place-items-center max-lg:tw-flex-col">
+					<div class="tw-flex-shrink-0 tw-text-center max-lg:tw-mb-4">
+						<div
+							class="border-gradient tw-h-[200px] tw-w-[200px] tw-overflow-hidden tw-rounded-lg max-md:tw-h-[150px] max-md:tw-w-[150px]">
+							<div
+								class="tw-flex tw-h-full tw-w-full tw-place-content-center tw-place-items-center tw-p-2">
+								<i
+									class="bi bi-database-check tw-text-7xl tw-text-gray-200 max-md:tw-text-5xl"></i>
+							</div>
+						</div>
+					</div>
+					<div class="tw-flex tw-flex-col tw-gap-4">
+						<h3
+							class="tw-text-3xl tw-font-normal tw-text-gray-200 max-md:tw-text-2xl">
+							Our
+							Solution</h3>
+						<div class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+							A specialized LIMS that stores complex polymer test data in
+							structured
+							database,
+							providing organized, searchable, and analyzable data management
+							for your
+							plant.
+							Transform chaotic paper records into structured digital assets.
+						</div>
+					</div>
+				</div>
+
+				<!-- IMPACT - Bottom -->
+				<div
+					class="reveal-up tw-flex tw-w-full tw-gap-8 tw-place-items-center max-lg:tw-flex-col">
+					<div class="tw-flex-shrink-0 tw-text-center max-lg:tw-mb-4">
+						<div
+							class="border-gradient tw-h-[200px] tw-w-[200px] tw-overflow-hidden tw-rounded-lg max-md:tw-h-[150px] max-md:tw-w-[150px]">
+							<div
+								class="tw-flex tw-h-full tw-w-full tw-place-content-center tw-place-items-center tw-p-2">
+								<i
+									class="bi bi-graph-up-arrow tw-text-7xl tw-text-gray-200 max-md:tw-text-5xl"></i>
+							</div>
+						</div>
+					</div>
+					<div class="tw-flex tw-flex-col tw-gap-4">
+						<h3
+							class="tw-text-3xl tw-font-normal tw-text-gray-200 max-md:tw-text-2xl">
+							The
+							Impact</h3>
+						<div class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+							Reduce data management significantly, eliminate manual errors,
+							and gain
+							real-time insights from your polymer testing data. Make informed
+							decisions
+							faster with structured, accessible information at your
+							fingertips.
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<section
+		class="tw-relative tw-flex tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6">
+		<div class="tw-mt-8 tw-flex tw-flex-col tw-place-items-center tw-gap-5">
+			<div class="reveal-up tw-mt-5 tw-flex tw-flex-col tw-gap-3 tw-text-center">
+				<h2 class="tw-text-4xl tw-font-medium tw-text-gray-200 max-md:tw-text-3xl">
+					Key benefits
+				</h2>
+			</div>
+			<div
+				class="tw-mt-6 tw-flex tw-max-w-[80%] tw-flex-wrap tw-place-content-center tw-gap-8 max-lg:tw-flex-col">
+
+				<!-- Database Management -->
+				<div
+					class="reveal-up tw-flex tw-h-[400px] tw-w-[450px] tw-flex-col tw-gap-3 tw-text-center max-md:tw-w-[320px]">
+					<div
+						class="border-gradient tw-h-[200px] tw-w-full tw-overflow-hidden max-md:tw-h-[150px]">
+						<div
+							class="tw-flex tw-h-full tw-w-full tw-place-content-center tw-place-items-end tw-p-2">
+							<i
+								class="bi bi-database-fill tw-text-7xl tw-text-gray-200 max-md:tw-text-5xl"></i>
+						</div>
+					</div>
+					<div class="tw-flex tw-flex-col tw-gap-4 tw-p-2">
+						<h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl">
+							Database Management
+						</h3>
+						<div class="tw-text-gray-300">Create and manage multiple databases to
+							organize your laboratory data by year, product line, or
+							department, ensuring optimal performance and streamlined data
+							separation for growing operations.</div>
+					</div>
+				</div>
+
+				<!-- Custom Feature Development -->
+				<div
+					class="reveal-up tw-flex tw-h-[400px] tw-w-[450px] tw-flex-col tw-gap-3 tw-text-center max-md:tw-w-[320px]">
+					<div
+						class="border-gradient tw-h-[200px] tw-w-full tw-overflow-hidden max-md:tw-text-[150px]">
+						<div
+							class="tw-flex tw-h-full tw-w-full tw-place-content-center tw-place-items-end tw-p-2">
+							<i
+								class="bi bi-tools tw-text-7xl tw-text-gray-200 max-md:tw-text-5xl"></i>
+						</div>
+					</div>
+					<div class="tw-flex tw-flex-col tw-gap-4 tw-p-2">
+						<h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl">
+							Custom Feature Development
+						</h3>
+						<div class="tw-text-gray-300">Our development team adapts the software
+							to your unique laboratory workflows, ensuring perfect alignment
+							with your specific operational requirements.</div>
+					</div>
+				</div>
+
+				<!-- Automated Backup -->
+				<div
+					class="reveal-up tw-flex tw-h-[400px] tw-w-[450px] tw-flex-col tw-gap-3 tw-text-center max-md:tw-w-[320px]">
+					<div
+						class="border-gradient tw-h-[200px] tw-w-full tw-overflow-hidden max-md:tw-h-[150px]">
+						<div
+							class="tw-flex tw-h-full tw-w-full tw-place-content-center tw-place-items-end tw-p-2">
+							<i
+								class="bi bi-shield-check tw-text-7xl tw-text-gray-200 max-md:tw-text-5xl"></i>
+						</div>
+					</div>
+					<div class="tw-flex tw-flex-col tw-gap-4 tw-p-2">
+						<h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl">
+							Automated Backup
+						</h3>
+						<div class="tw-text-gray-300">Protect your critical laboratory data with
+							automatic local backups at custom intervals, ensuring zero data
+							loss without internet dependency.</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<section id="action"
+		class="tw-relative tw-flex tw-min-h-[80vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6">
+		<div class="tw-mt-8 tw-flex tw-flex-col tw-place-items-center tw-gap-5">
+			<div class="reveal-up tw-mt-5 tw-flex tw-flex-col tw-gap-3 tw-text-center">
+				<h2 class="tw-text-4xl tw-font-medium tw-text-gray-200 max-md:tw-text-2xl">
+					See ChemQC in Action
+				</h2>
+				<p class="tw-text-xl tw-text-gray-300 max-md:tw-text-lg">
+					Discover how our LIMS revolutionizes polymer laboratory workflows
+				</p>
+			</div>
+			<div
+				class="tw-mt-6 tw-flex tw-max-w-[80%] tw-flex-wrap tw-place-content-center tw-gap-8 max-lg:tw-flex-col">
+
+				<!-- Instant Data Retrieval -->
+				<div
+					class="reveal-up showcase-item tw-flex tw-h-[400px] tw-w-[450px] tw-flex-col tw-gap-4 tw-rounded-xl tw-border-[1px] tw-border-outlineColor tw-bg-secondary tw-p-6 tw-cursor-pointer tw-transition-all tw-duration-300 hover:tw-scale-105 hover:tw-border-primary max-md:tw-w-[320px]">
+					<img class="showcase-image tw-h-[250px] tw-w-full tw-object-cover tw-rounded-lg"
+						alt="Instant Data Retrieval" src="./assets/img/retrieval.png"
+						data-lightbox-title="Instant Data Retrieval"
+						data-lightbox-description="Find any polymer test result on your products OR your raw materials within seconds using our advanced search algorithms and intuitive interface. Quickly locate MFI results, OIT values, or yield stress data across your entire testing history." />
+					<div class="showcase-content tw-flex tw-flex-col tw-gap-3">
+						<h4
+							class="tw-text-2xl tw-font-semibold tw-text-gray-200 max-md:tw-text-xl">
+							Instant Data Retrieval</h4>
+						<p class="tw-text-gray-300">Find any test result within
+							seconds across your entire database</p>
+					</div>
+				</div>
+
+				<!-- Advanced Analytics -->
+				<div
+					class="reveal-up showcase-item tw-flex tw-h-[400px] tw-w-[450px] tw-flex-col tw-gap-4 tw-rounded-xl tw-border-[1px] tw-border-outlineColor tw-bg-secondary tw-p-6 tw-cursor-pointer tw-transition-all tw-duration-300 hover:tw-scale-105 hover:tw-border-primary max-md:tw-w-[320px]">
+					<img class="showcase-image tw-h-[250px] tw-w-full tw-object-cover tw-rounded-lg"
+						alt="Advanced Analytics" src="./assets/img/advanced.png"
+						data-lightbox-title="Advanced Analytics"
+						data-lightbox-description="Generate detailed graphs and tabular reports from search results with customizable parameters and export options. Visualize polymer test trends, compare material performance, and identify quality patterns with powerful analytical tools." />
+					<div class="showcase-content tw-flex tw-flex-col tw-gap-3">
+						<h4
+							class="tw-text-2xl tw-font-semibold tw-text-gray-200 max-md:tw-text-xl">
+							Advanced Analytics</h4>
+						<p class="tw-text-gray-300">Generate detailed graphs and tabular reports
+							from search results with custom parameters</p>
+					</div>
+				</div>
+
+				<!-- Custom Test Definition -->
+				<div
+					class="reveal-up showcase-item tw-flex tw-h-[400px] tw-w-[450px] tw-flex-col tw-gap-4 tw-rounded-xl tw-border-[1px] tw-border-outlineColor tw-bg-secondary tw-p-6 tw-cursor-pointer tw-transition-all tw-duration-300 hover:tw-scale-105 hover:tw-border-primary max-md:tw-w-[320px]">
+					<img class="showcase-image tw-h-[250px] tw-w-full tw-object-cover tw-rounded-lg"
+						alt="Custom Test Definition" src="./assets/img/test.png"
+						data-lightbox-title="Custom Test Definition"
+						data-lightbox-description="Easily create new testing methods like MFI, ESCR and OIT under different standard environments (e.g. ISO 1133, EN 23900, ASTM D638, etc.) " />
+					<div class="showcase-content tw-flex tw-flex-col tw-gap-3">
+						<h4
+							class="tw-text-2xl tw-font-semibold tw-text-gray-200 max-md:tw-text-xl">
+							Custom Test Definition</h4>
+						<p class="tw-text-gray-300">Easily create new testing methods like MFI
+							, ESCR, etc. under different standards (different ISOs, ENs
+							and ASTMs)</p>
+					</div>
+				</div>
+
+				<!-- Quick Data Entry -->
+				<div
+					class="reveal-up showcase-item tw-flex tw-h-[400px] tw-w-[450px] tw-flex-col tw-gap-4 tw-rounded-xl tw-border-[1px] tw-border-outlineColor tw-bg-secondary tw-p-6 tw-cursor-pointer tw-transition-all tw-duration-300 hover:tw-scale-105 hover:tw-border-primary max-md:tw-w-[320px]">
+					<img class="showcase-image tw-h-[250px] tw-w-full tw-object-cover tw-rounded-lg"
+						alt="Quick Data Entry" src="./assets/img/recording.png"
+						data-lightbox-title="Quick Data Entry"
+						data-lightbox-description="Fast storage system for raw materials and finished products, with resolution down to different palettes! alert the lab supervisors when product/raw material quality is lower than expected." />
+					<div class="showcase-content tw-flex tw-flex-col tw-gap-3">
+						<h4
+							class="tw-text-2xl tw-font-semibold tw-text-gray-200 max-md:tw-text-xl">
+							Quick Data Entry</h4>
+						<p class="tw-text-gray-300">Fast storage system for raw materials and
+							finished products.</p>
+					</div>
+				</div>
+
+				<!-- Role-Based Access Control -->
+				<div
+					class="reveal-up showcase-item tw-flex tw-h-[400px] tw-w-[450px] tw-flex-col tw-gap-4 tw-rounded-xl tw-border-[1px] tw-border-outlineColor tw-bg-secondary tw-p-6 tw-cursor-pointer tw-transition-all tw-duration-300 hover:tw-scale-105 hover:tw-border-primary max-md:tw-w-[320px]">
+					<img class="showcase-image tw-h-[250px] tw-w-full tw-object-cover tw-rounded-lg"
+						alt="Role-Based Access Control" src="./assets/img/settings.png"
+						data-lightbox-title="Role-Based Access Control"
+						data-lightbox-description="Three user permission levels ensure proper data security management with granular access controls. Protect sensitive polymer formulations and test results while enabling appropriate access for technicians, supervisors, and administrators." />
+					<div class="showcase-content tw-flex tw-flex-col tw-gap-3">
+						<h4
+							class="tw-text-2xl tw-font-semibold tw-text-gray-200 max-md:tw-text-xl">
+							Role-Based Access Control</h4>
+						<p class="tw-text-gray-300">Three user permission levels ensure proper
+							data security management</p>
+					</div>
+				</div>
+
+				<!-- Export Flexibility -->
+				<div
+					class="reveal-up showcase-item tw-flex tw-h-[400px] tw-w-[450px] tw-flex-col tw-gap-4 tw-rounded-xl tw-border-[1px] tw-border-outlineColor tw-bg-secondary tw-p-6 tw-cursor-pointer tw-transition-all tw-duration-300 hover:tw-scale-105 hover:tw-border-primary max-md:tw-w-[320px]">
+					<img class="showcase-image tw-h-[250px] tw-w-full tw-object-cover tw-rounded-lg"
+						alt="Export Flexibility" src="./assets/img/report.png"
+						data-lightbox-title="Export Flexibility"
+						data-lightbox-description="Export reports as images, spreadsheets, or PDFs instantly with customizable formatting options. Share polymer test results, quality certificates, and analytical reports with stakeholders in their preferred format with just a few clicks." />
+					<div class="showcase-content tw-flex tw-flex-col tw-gap-3">
+						<h4
+							class="tw-text-2xl tw-font-semibold tw-text-gray-200 max-md:tw-text-xl">
+							Export Flexibility</h4>
+						<p class="tw-text-gray-300">Export reports as images, spreadsheets, or
+							PDFs instantly with custom formatting</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!--
+	<section
+		class="tw-relative tw-flex tw-min-h-[80vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6">
+		<div
+			class="reveal-up tw-flex tw-min-h-[60vh] tw-place-content-center tw-place-items-center tw-gap-[10%] max-lg:tw-flex-col max-lg:tw-gap-10">
+			<div class="tw-flex">
+				<div
+					class="tw-max-h-[650px] tw-max-w-[850px] tw-overflow-hidden tw-rounded-lg tw-shadow-lg tw-shadow-[rgba(170,49,233,0.44021358543417366)]">
+					<img src="./assets/images/home/dash.png" alt="coding"
+						class="tw-h-full tw-w-full tw-object-cover" />
+				</div>
+			</div>
+			<div class="tw-mt-6 tw-flex tw-max-w-[450px] tw-flex-col tw-gap-4">
+				<h3 class="tw-text-4xl tw-font-medium max-md:tw-text-2xl">
+					Simple to use plugins
+				</h3>
+
+				<div class="tw-mt-4 tw-flex tw-flex-col tw-gap-3">
+					<h4 class="tw-text-xl tw-font-medium">
+						<i class="bi bi-check-all !tw-text-2xl"></i>
+						AI powered
+					</h4>
+					<span class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+						Lorem ipsum dolor sit amet, consectetur adipisicing
+						elit. Reiciendis commodi temporibus at? Aspernatur,
+						a necessitatibus?
+					</span>
+				</div>
+				<div class="tw-mt-4 tw-flex tw-flex-col tw-gap-3">
+					<h4 class="tw-text-xl tw-font-medium">
+						<i class="bi bi-check-all !tw-text-2xl"></i>
+						Locally run
+					</h4>
+					<span class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+						Lorem ipsum dolor sit amet, consectetur adipisicing
+						elit. Reiciendis commodi temporibus at? Aspernatur,
+						a necessitatibus?
+					</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section
+		class="tw-relative tw-flex tw-min-h-[80vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6">
+		<div
+			class="reveal-up tw-flex tw-min-h-[60vh] tw-place-content-center tw-place-items-center tw-gap-[10%] max-lg:tw-flex-col max-lg:tw-gap-10">
+			<div class="tw-mt-6 tw-flex tw-max-w-[450px] tw-flex-col tw-gap-4">
+				<h3 class="tw-text-4xl tw-font-medium max-md:tw-text-2xl">
+					Powerful Insights
+				</h3>
+
+				<div class="tw-mt-4 tw-flex tw-flex-col tw-gap-3">
+					<h4 class="tw-text-xl tw-font-medium">
+						<i class="bi bi-check-all !tw-text-2xl"></i>
+						Easy to use
+					</h4>
+					<span class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+						Lorem ipsum dolor sit amet, consectetur adipisicing
+						elit. Reiciendis commodi temporibus at? Aspernatur,
+						a necessitatibus?
+					</span>
+				</div>
+				<div class="tw-mt-4 tw-flex tw-flex-col tw-gap-3">
+					<h4 class="tw-text-xl tw-font-medium">
+						<i class="bi bi-check-all !tw-text-2xl"></i>
+						All in one panel
+					</h4>
+					<span class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+						Lorem ipsum dolor sit amet, consectetur adipisicing
+						elit. Reiciendis commodi temporibus at? Aspernatur,
+						a necessitatibus?
+					</span>
+				</div>
+			</div>
+
+			<div class="tw-flex">
+				<div
+					class="tw-max-h-[650px] tw-max-w-[850px] tw-overflow-hidden tw-rounded-lg tw-shadow-lg tw-shadow-[rgba(170,49,233,0.44021358543417366)]">
+					<img src="./assets/images/home/insights.png" alt="coding"
+						class="tw-h-full tw-w-full tw-object-cover" />
+				</div>
+			</div>
+		</div>
+	</section>
+-->
+
+
+
+
+
+
+	<section id="faq"
+		class="tw-flex tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-gap-[10%] tw-p-[5%] tw-px-[10%]">
+		<h3 class="tw-text-4xl tw-font-medium tw-text-gray-300 max-md:tw-text-2xl">Frequently Asked Questions
+		</h3>
+		<div class="tw-mt-5 tw-flex tw-min-h-[300px] tw-w-full tw-max-w-[850px] tw-flex-col tw-gap-4">
+			<div
+				class="faq tw-w-full tw-rounded-md tw-border-[1px] tw-border-solid tw-border-[#1F2123] tw-bg-[#080808]">
+				<div
+					class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg">
+					<span>Can ChemQC handle specialized polymer tests like MFI, OIT, and Yield
+						Stress?</span>
+					<i class="bi bi-plus tw-ml-auto tw-font-semibold"></i>
+				</div>
+				<div class="content">Yes, ChemQC provides complete flexibility to define any polymer
+					test your laboratory requires. The system features an intuitive test builder
+					that allows your administrators to easily configure MFI (Melt Flow Index), OIT
+					(Oxidative Induction Time), Yield Stress, and any other specialized tests
+					exactly according to your laboratory's protocols and specifications. This
+					ensures the system adapts perfectly to your unique testing requirements rather
+					than forcing you into predefined templates.
+				</div>
+			</div>
+
+			<div
+				class="faq tw-w-full tw-rounded-md tw-border-[1px] tw-border-solid tw-border-[#1F2123] tw-bg-[#080808]">
+				<div
+					class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg">
+					<span>How difficult is it to install and run ChemQC?</span>
+					<i class="bi bi-plus tw-ml-auto tw-font-semibold"></i>
+				</div>
+				<div class="content"> ChemQC is designed for easy deployment and can run efficiently on
+					standard computer systems without demanding high specifications. The application
+					uses SQLite for database management, eliminating the need for dedicated servers
+					or complex network infrastructure. It's lightweight, resource-efficient, and
+					ready to use right out of the box.</div>
+			</div>
+
+			<div
+				class="faq tw-w-full tw-rounded-md tw-border-[1px] tw-border-solid tw-border-[#1F2123] tw-bg-[#080808]">
+				<div
+					class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg">
+					<span>What tests and standards does ChemQC support?</span>
+					<i class="bi bi-plus tw-ml-auto tw-font-semibold"></i>
+				</div>
+				<div class="content">ChemQC gives administrators full flexibility to define any test
+					method or standard your laboratory requires. You can create and customize
+					testing protocols for various standards including ISO, ASTM, and other
+					international or internal specifications. The system adapts to your laboratory's
+					specific testing needs rather than limiting you to predefined options.</div>
+			</div>
+
+			<div
+				class="faq tw-w-full tw-rounded-md tw-border-[1px] tw-border-solid tw-border-[#1F2123] tw-bg-[#080808]">
+				<div
+					class="faq-accordion tw-flex tw-w-full tw-select-none tw-text-xl max-md:tw-text-lg">
+					<span> Can ChemQC be adapted to the specific workflow of our plant?</span>
+					<i class="bi bi-plus tw-ml-auto tw-font-semibold"></i>
+				</div>
+				<div class="content"> Yes, our development team can quickly create a customized model
+					that maps precisely to your plant's unique workflow. We'll design a system that
+					monitors and manages your entire process chain—from raw material intake through
+					production and testing, all the way to final product delivery to your customers.
+				</div>
+			</div>
+		</div>
+
+		<div class="tw-mt-20 tw-flex tw-flex-col tw-place-items-center tw-gap-4">
+			<div class="tw-text-3xl max-md:tw-text-2xl">
+				Still have questions?
+			</div>
+			<a href="mailto:Slotfi909@gmail.com?subject=Question About ChemQC"
+				class="btn !tw-rounded-full !tw-border-[1px] !tw-border-solid !tw-border-gray-300 !tw-bg-transparent tw-transition-colors tw-duration-[0.3s]">
+				Contact
+			</a>
+		</div>
+	</section>
+
+
+
+	<footer id="about"
+		class="tw-mt-auto tw-flex tw-w-full tw-place-content-around tw-gap-3 tw-p-[5%] tw-px-[10%] tw-text-white max-md:tw-flex-col">
+		<div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-place-items-center tw-gap-6 max-md:tw-w-full">
+			<img src="./assets/logo/logo.png" alt="logo" srcset="" class="tw-max-w-[120px]" />
+			<div>
+				Isfahan University of Technology,
+				<br />
+				Isfahan,
+				<br />
+				Iran
+			</div>
+			<!--
+<div class="tw-mt-3 tw-text-lg tw-font-semibold">Follow us</div>
+			<div class="tw-flex tw-gap-4 tw-text-2xl">
+				<a href="" aria-label="Facebook">
+					<i class="bi bi-facebook"></i>
+				</a>
+				<a href="https://twitter.com/@pauls_freeman" aria-label="Twitter">
+					<i class="bi bi-twitter"></i>
+				</a>
+				<a href="https://instagram.com/" class="tw-h-[40px] tw-w-[40px]" aria-label="Instagram">
+					<i class="bi bi-instagram"></i>
+				</a>
+			</div>
+-->
+		</div>
+		<div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-gap-4">
+			<h2 class="tw-text-3xl max-md:tw-text-xl">Schedule a Business Meeting</h2>
+			<div class="tw-flex tw-flex-col tw-gap-3 max-md:tw-text-sm">
+				<a href="mailto:Slotfi909@gmail.com" class="footer-link">Slotfi909@gmail.com</a>
+				<a href="tel:+989395866475" class="footer-link">+98 939 586 6475</a>
+				<a href="https://t.me/lsorooshl" class="footer-link">Telegram: @lsorooshl</a>
+
+
+			</div>
+		</div>
+
+		<div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-gap-4">
+			<h2 class="tw-text-3xl max-md:tw-text-xl">About ChemQC</h2>
+			<div class="tw-flex tw-flex-col tw-gap-3 max-md:tw-text-sm">
+				<p class="tw-text-gray-300 tw-text-sm tw-leading-relaxed">
+					Enterprise laboratory data management solution designed for manufacturing
+					excellence and operational precision.
+				</p>
+			</div>
+		</div>
+
+
+
+	</footer>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"
+	integrity="sha512-B1lby8cGcAUU3GR+Fd809/ZxgHbfwJMp0jLTVfHiArTuUt++VqSlJpaJvhNtRf3NERaxDNmmxkdx2o+aHd4bvw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"
+	integrity="sha512-AY2+JxnBETJ0wcXnLPCcZJIJx0eimyhz3OJ55k2Jx4RtYC+XdIi2VtJQ+tP3BaTst4otlGG1TtPJ9fKrAUnRdQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="./index.js"></script>
+
+</html>
