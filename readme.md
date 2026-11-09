@@ -1,89 +1,53 @@
 # ChemQC Website
 
-This repository contains the static landing page for ChemQC, a laboratory data management product for polymer manufacturing laboratories. It introduces the product, shows screenshots, answers common questions, and provides contact information.
+This repository contains the static landing page for ChemQC, a laboratory data management product for polymer manufacturing laboratories. It introduces the product, shows screenshots, answers common questions, and provides contact information. The ChemQC application itself is not included.
 
-The ChemQC application itself is not included in this repository.
+The site is built with Astro, Tailwind CSS 3, and vanilla JavaScript. Tailwind utilities use the `tw-` prefix. GSAP and ScrollTrigger, Bootstrap Icons, and Google Fonts load from external services.
 
-## Site Features
+## Local Development
 
-- Product introduction, benefits, screenshots, and frequently asked questions.
-- Responsive navigation and expandable FAQ answers.
-- Clickable product screenshots with a lightbox.
-- Scroll-triggered animations and email links for demo requests and contact.
+Use Node.js 22 and npm. Node.js 12 is too old for the current dependencies. Check your version and install dependencies without changing the existing local lockfile:
+
+```sh
+node --version
+npm install --no-package-lock
+npm run dev
+```
+
+Open the local URL printed by Astro. To build and preview the production site:
+
+```sh
+npm run build
+npm run preview
+```
+
+The Astro scripts replace the former standalone Tailwind watch and build scripts. Vite processes `css/tailwind.css` and `css/index.css` as part of development and production builds. The tracked `css/tailwind-build.css` is a legacy generated stylesheet and is no longer loaded.
+
+No lockfile is committed or used for installation. Dependency ranges can therefore resolve to different versions over time, so builds are not fully reproducible. A locally existing `package-lock.json` is not changed by the commands above.
 
 ## Project Structure
 
 ```text
-index.html              Page content and layout
-index.js                Navigation, FAQ, lightbox, and animation behavior
-css/index.css           Custom site styles
-css/tailwind.css        Tailwind CSS source
-css/tailwind-build.css  Prebuilt stylesheet loaded by the page
-tailwind.config.js      Tailwind configuration and theme colors
-assets/img/             Product screenshots
-assets/logo/            ChemQC logo
-assets/images/          Additional images from the landing-page template
-CNAME                   Custom domain configuration
+src/pages/index.astro       Page composition
+src/layouts/Layout.astro    Document metadata, styles, and scripts
+src/components/             Page sections
+public/assets/              Product screenshots and logo
+public/index.js             Navigation, FAQ, lightbox, and animations
+public/CNAME                Custom domain configuration
+css/index.css               Custom site styles
+css/tailwind.css            Tailwind directives
+tailwind.config.js          Tailwind content paths and theme colors
+astro.config.mjs            Astro and PostCSS configuration
+dist/                       Generated static site
 ```
 
-The site uses HTML, vanilla JavaScript, and Tailwind CSS. Tailwind utility classes use the `tw-` prefix. GSAP and ScrollTrigger, Bootstrap Icons, and Google Fonts are loaded from external services.
+## Deployment
 
-## Viewing Locally
-
-Open `index.html` in a browser, or serve the repository directory with a static server. For example, with Python installed:
-
-```sh
-python3 -m http.server 8000
-```
-
-Then visit `http://localhost:8000`. The prebuilt stylesheet is already included, so no build is needed to view the site. External fonts, icons, and animation libraries require a network connection.
-
-The `CNAME` file specifies the custom domain `chemqc.ir`.
-
-## CSS Development
-
-Tailwind reads `css/tailwind.css` and `tailwind.config.js` to generate the stylesheet loaded by the page, `css/tailwind-build.css`. Custom styles are maintained separately in `css/index.css`.
-
-Use Node.js 22 and npm for CSS development (the scripts have been verified with Node.js 22). Check your versions and install the dependencies:
-
-```sh
-node --version
-npm --version
-npm install
-```
-
-While editing, watch for changes and rebuild the stylesheet automatically:
-
-```sh
-npm run start:tailwind
-```
-
-For a one-time minified production build, run:
-
-```sh
-npm run build:tailwind
-```
-
-Both commands update `css/tailwind-build.css`, which `index.html` already loads. Serve the site separately as described above and refresh the browser to see changes.
-
-### Troubleshooting Node.js
-
-If `npm install` reports `EBADENGINE` warnings, or a Tailwind command fails with `Cannot find module 'node:path'`, check `node --version`. Node.js 12 is too old for the current dependencies, even if installation finishes successfully. Install and use Node.js 22, then run `npm install` again.
-
-For example, after installing [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) and reopening your terminal:
-
-```sh
-nvm install 22
-nvm alias default 22
-node --version
-npm install
-```
-
-If the version is still incorrect, ensure the newer Node.js installation is active in your current terminal and appears before the system installation in `PATH`.
+Set the repository's Pages source to **GitHub Actions** in its GitHub settings. The Pages workflow builds on pushes to `main` or manual dispatch, then deploys `dist/` using GitHub's official Pages actions. `public/CNAME` is copied into the output and specifies `chemqc.ir`. Deployment requires a later push or merge to `main`; local builds do not publish the site.
 
 ## Tests
 
-No automated test suite is configured. `npm test` is a placeholder that exits with an error.
+No automated test suite is configured. Run `npm run build` to check the static build, and test navigation, FAQ, lightbox, and responsive layouts in a browser.
 
 ## Attribution
 
