@@ -1,0 +1,33 @@
+---
+import '../../css/tailwind.css';
+import '../../css/index.css';
+---
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>ChemQC - Precision Laboratory Data Management</title>
+	<meta name="ChemQC" content="ChemQC introduction, LIMS system for storing test results of polymer plants" />
+	<link rel="shortcut icon" href="./assets/logo/logo.png" type="image/x-icon" />
+	<meta property="og:title" content="ChemQC - Precision Laboratory Data Management" />
+	<meta property="og:description" content="a software solution based on LIMS systems for storing test results of polymer plants" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://ChemQC.ir" />
+	<meta property="og:image" content="" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+		integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-black tw-text-white">
+	<slot />
+	<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"
+		integrity="sha512-B1lby8cGcAUU3GR+Fd809/ZxgHbfwJMp0jLTVfHiArTuUt++VqSlJpaJvhNtRf3NERaxDNmmxkdx2o+aHd4bvw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"
+		integrity="sha512-AY2+JxnBETJ0wcXnLPCcZJIJx0eimyhz3OJ55k2Jx4RtYC+XdIi2VtJQ+tP3BaTst4otlGG1TtPJ9fKrAUnRdQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script is:inline src="./index.js"></script>
+</body>
+</html>

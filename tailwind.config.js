@@ -3,8 +3,6 @@ module.exports = {
 	prefix: 'tw-',
 	important: false,
 	content: [
-		"./index.html",
-		"./index.js",
 		"./src/**/*.{astro,js,ts}",
 		"./public/index.js",
 	],
