@@ -5,6 +5,8 @@ module.exports = {
 	content: [
 		"./index.html",
 		"./index.js",
+		"./src/**/*.{astro,js,ts}",
+		"./public/index.js",
 	],
 	darkMode: 'class',
 	theme: {

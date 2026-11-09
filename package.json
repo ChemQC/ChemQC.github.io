@@ -4,9 +4,9 @@
     "description": "beautiful landing pages",
     "main": "index.js",
     "scripts": {
-      "start:tailwind": "tailwindcss -i css/tailwind.css -o css/tailwind-build.css -w",
-      "build:tailwind": "tailwindcss -i css/tailwind.css -o css/tailwind-build.css --minify",
-      "test": "echo \"Error: no test specified\" && exit 1"
+      "dev": "astro dev",
+      "build": "astro build",
+      "preview": "astro preview"
     },
     "keywords": [
       "landing",
@@ -18,6 +18,7 @@
     "author": "Paul",
     "license": "MIT",
     "devDependencies": {
+      "astro": "^5.16.0",
       "tailwindcss": "^3.4.1"
     },
     "dependencies": {
