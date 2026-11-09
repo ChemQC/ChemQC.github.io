@@ -3,9 +3,8 @@ module.exports = {
 	prefix: 'tw-',
 	important: false,
 	content: [
-		"**/*.{html, jsx, js}",
-		"**/*.js",
-		"**/*.html",
+		"./index.html",
+		"./index.js",
 	],
 	darkMode: 'class',
 	theme: {
@@ -19,4 +18,3 @@ module.exports = {
 	},
 	plugins: [],
 }
-
