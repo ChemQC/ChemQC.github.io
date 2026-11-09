@@ -1,68 +1,9 @@
 ---
+import HeaderHero from '../components/HeaderHero.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout>
-	<header
-		class="tw-max-w-lg:tw-px-4 tw-max-w-lg:tw-mr-auto tw-absolute tw-top-0 tw-z-20 tw-flex tw-h-[60px] tw-w-full tw-bg-opacity-0 tw-px-[5%] lg:tw-justify-around">
-		<a class="tw-h-[50px] tw-w-[50px] tw-p-[4px]" href="">
-			<img src="./assets/logo/logo.png" alt="logo" class="tw-object tw-h-full tw-w-full" />
-		</a>
-		<div class="collapsible-header animated-collapse max-lg:tw-shadow-md" id="collapsed-header-items">
-			<div
-				class="tw-flex tw-h-full tw-w-max tw-gap-5 tw-text-base max-lg:tw-mt-[30px] max-lg:tw-flex-col max-lg:tw-place-items-end max-lg:tw-gap-5 lg:tw-mx-auto lg:tw-place-items-center">
-				<a class="header-links" href="#intro">Introduction</a>
-				<a class="header-links" href="#action">ChemQC In Action</a>
-				<a class="header-links" href="#faq">FAQ</a>
-				<a class="header-links" href="#about">About Us</a>
-			</div>
-			<div
-				class="tw-mx-4 tw-flex tw-place-items-center tw-gap-[20px] tw-text-base max-md:tw-w-full max-md:tw-flex-col max-md:tw-place-content-center">
-
-			</div>
-		</div>
-		<button class="bi bi-list tw-absolute tw-right-3 tw-top-3 tw-z-50 tw-text-3xl tw-text-white lg:tw-hidden"
-			onclick="toggleHeader()" aria-label="menu" id="collapse-btn"></button>
-	</header>
-
-	<section class="hero-section tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-overflow-hidden max-md:tw-mt-[50px]"
-		id="hero-section">
-		<div
-			class="tw-flex tw-h-full tw-min-h-[100vh] tw-w-full tw-flex-col tw-place-content-center tw-gap-6 tw-p-[5%] max-xl:tw-place-items-center max-lg:tw-p-4">
-			<div class="tw-flex tw-flex-col tw-place-content-center tw-items-center">
-				<div
-					class="reveal-up gradient-text tw-text-center tw-text-6xl tw-font-semibold tw-uppercase tw-leading-[80px] max-lg:tw-text-4xl max-md:tw-leading-snug">
-					<span class="">ChemQC</span>
-					<br />
-					<span class="">Precision Meets Efficiency</span>
-				</div>
-				<div
-					class="reveal-up tw-mt-10 tw-max-w-[450px] tw-p-2 tw-text-center tw-text-gray-300 max-lg:tw-max-w-full">
-					Transform your manufacturing laboratory operations with offline data management
-					software that delivers the precision and efficiency your quality control
-					processes demand.</div>
-
-				<div class="reveal-up tw-mt-10 tw-flex tw-place-items-center tw-gap-4">
-					<a class="btn tw-bg-[#7e22ce85] tw-shadow-lg tw-shadow-primary tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.03]"
-						href="mailto:Slotfi909@gmail.com?subject=Schedule Demo Request">Request
-						Demo</a>
-
-				</div>
-			</div>
-
-			<div class="reveal-up tw-relative tw-mt-8 tw-flex tw-w-full tw-place-content-center tw-place-items-center"
-				id="dashboard-container">
-				<div class="tw-relative tw-max-w-[80%] tw-overflow-hidden tw-rounded-xl tw-bg-transparent max-md:tw-max-w-full"
-					id="dashboard">
-					<img src="./assets/img/main.png" alt="main image"
-						class="tw-h-full tw-w-full tw-object-cover tw-opacity-90 max-lg:tw-object-contain" />
-				</div>
-
-				<div
-					class="hero-img-bg-grad tw-absolute tw-left-[20%] tw-top-5 tw-h-[200px] tw-w-[200px]">
-				</div>
-			</div>
-		</div>
-	</section>
+	<HeaderHero />
 
 	<section id="intro"
 		class="tw-relative tw-flex tw-min-h-[80vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6">
