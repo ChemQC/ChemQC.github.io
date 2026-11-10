@@ -1,7 +1,7 @@
 <header
 		class="tw-max-w-lg:tw-px-4 tw-max-w-lg:tw-mr-auto tw-absolute tw-top-0 tw-z-20 tw-flex tw-h-[60px] tw-w-full tw-bg-opacity-0 tw-px-[5%] lg:tw-justify-around">
 		<a class="tw-h-[50px] tw-w-[50px] tw-p-[4px]" href="">
-			<img src="./assets/logo/logo.png" alt="logo" class="tw-object tw-h-full tw-w-full" />
+			<img src="./assets/logo/logo.png" alt="ChemQC logo" class="site-logo tw-object tw-h-full tw-w-full" />
 		</a>
 		<div class="collapsible-header animated-collapse max-lg:tw-shadow-md" id="collapsed-header-items">
 			<div
@@ -16,8 +16,15 @@
 
 			</div>
 		</div>
-		<button id="theme-toggle" type="button" aria-pressed="false"
-			class="tw-absolute tw-right-14 tw-top-3 tw-z-50 tw-rounded-md tw-border tw-border-current tw-px-3 tw-py-1 tw-text-sm focus-visible:tw-outline focus-visible:tw-outline-2 focus-visible:tw-outline-offset-2 lg:tw-right-[5%]">Light theme</button>
+		<button id="theme-toggle" type="button" class="theme-toggle tw-absolute tw-right-14 tw-top-3 tw-z-50 lg:tw-right-[5%]">
+			<svg class="theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+				<circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+			</svg>
+			<svg class="theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+				<path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z" />
+			</svg>
+			<span id="theme-label">Light theme</span>
+		</button>
 		<button class="bi bi-list tw-absolute tw-right-3 tw-top-3 tw-z-50 tw-text-3xl tw-text-white lg:tw-hidden"
 			onclick="toggleHeader()" aria-label="menu" id="collapse-btn"></button>
 	</header>

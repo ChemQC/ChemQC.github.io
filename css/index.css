@@ -26,6 +26,31 @@ header{
     color: #b1b1b1;
 }
 
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid #a88cbd;
+    border-radius: 9999px;
+    padding: 0.4rem 0.75rem;
+    background: #23152e;
+    color: #f5eaff;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.theme-toggle:hover { border-color: #d8b4fe; }
+.theme-toggle:focus-visible { outline: 2px solid #a855f7; outline-offset: 3px; }
+.theme-toggle svg { width: 1.125rem; height: 1.125rem; flex: none; }
+.theme-icon-moon, html[data-theme="light"] .theme-icon-sun { display: none; }
+html[data-theme="light"] .theme-icon-moon { display: block; }
+html[data-theme="light"] .theme-toggle { background: #fff; color: #4c1d70; border-color: #8056a0; }
+
+.site-logo {
+    background-color: #808080;
+    border-radius: 0.5rem;
+}
+
 
 header > .collapsible-header{
     display: flex;

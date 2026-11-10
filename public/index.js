@@ -8,11 +8,12 @@ const collapseBtn = document.getElementById("collapse-btn")
 const collapseHeaderItems = document.getElementById("collapsed-header-items")
 const themeToggle = document.getElementById("theme-toggle")
 
-themeToggle.setAttribute("aria-pressed", document.documentElement.dataset.theme === "light")
+const themeLabel = document.getElementById("theme-label")
+themeLabel.textContent = document.documentElement.dataset.theme === "light" ? "Dark theme" : "Light theme"
 themeToggle.addEventListener("click", () => {
     const light = document.documentElement.dataset.theme !== "light"
     document.documentElement.dataset.theme = light ? "light" : "dark"
-    themeToggle.setAttribute("aria-pressed", light)
+    themeLabel.textContent = light ? "Dark theme" : "Light theme"
     try {
         localStorage.setItem("theme", light ? "light" : "dark")
     } catch (error) {}
