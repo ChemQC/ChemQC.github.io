@@ -1,16 +1,16 @@
 # ChemQC Website
 
-This repository contains the static landing page for ChemQC, a laboratory data management product for polymer manufacturing laboratories. It introduces the product, shows screenshots, answers common questions, and provides contact information. The ChemQC application itself is not included.
+This repository contains the static landing page for ChemQC, a laboratory data management product for polymer manufacturing laboratories. It introduces the product, shows screenshots, answers common questions, and provides contact information.
 
 The site is built with Astro, Tailwind CSS 3, and vanilla JavaScript. Tailwind utilities use the `tw-` prefix. GSAP and ScrollTrigger, Bootstrap Icons, and Google Fonts load from external services.
 
 ## Local Development
 
-Use Node.js 22 and npm. Node.js 12 is too old for the current dependencies. Check your version and install dependencies without changing the existing local lockfile:
+Use Node.js 22 and npm. Check your version and install dependencies without changing the existing local lockfile:
 
 ```sh
 node --version
-npm install --no-package-lock
+npm install
 npm run dev
 ```
 
@@ -21,9 +21,8 @@ npm run build
 npm run preview
 ```
 
-The Astro scripts replace the former standalone Tailwind watch and build scripts. Vite processes `css/tailwind.css` and `css/index.css` as part of development and production builds. The tracked `css/tailwind-build.css` is a legacy generated stylesheet and is no longer loaded.
+The Astro scripts replace the former standalone Tailwind watch and build scripts. Vite processes `css/tailwind.css` and `css/index.css` as part of development and production builds.
 
-No lockfile is committed or used for installation. Dependency ranges can therefore resolve to different versions over time, so builds are not fully reproducible. A locally existing `package-lock.json` is not changed by the commands above.
 
 ## Project Structure
 
