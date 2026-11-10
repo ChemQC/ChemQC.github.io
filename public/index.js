@@ -6,12 +6,23 @@ let headerWhiteBg = false
 let isHeaderCollapsed = window.innerWidth < RESPONSIVE_WIDTH
 const collapseBtn = document.getElementById("collapse-btn")
 const collapseHeaderItems = document.getElementById("collapsed-header-items")
+const themeToggle = document.getElementById("theme-toggle")
+
+themeToggle.setAttribute("aria-pressed", document.documentElement.dataset.theme === "light")
+themeToggle.addEventListener("click", () => {
+    const light = document.documentElement.dataset.theme !== "light"
+    document.documentElement.dataset.theme = light ? "light" : "dark"
+    themeToggle.setAttribute("aria-pressed", light)
+    try {
+        localStorage.setItem("theme", light ? "light" : "dark")
+    } catch (error) {}
+})
 
 
 
 function onHeaderClickOutside(e) {
 
-    if (!collapseHeaderItems.contains(e.target)) {
+    if (!collapseHeaderItems.contains(e.target) && !themeToggle.contains(e.target)) {
         toggleHeader()
     }
 

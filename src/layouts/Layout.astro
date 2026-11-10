@@ -7,6 +7,11 @@ import '../../css/index.css';
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script is:inline>
+		try {
+			if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light';
+		} catch (error) {}
+	</script>
 	<title>ChemQC - Precision Laboratory Data Management</title>
 	<meta name="ChemQC" content="ChemQC introduction, LIMS system for storing test results of polymer plants" />
 	<link rel="shortcut icon" href="./assets/logo/logo.png" type="image/x-icon" />
