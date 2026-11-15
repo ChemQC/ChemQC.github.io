@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components{
-}
 
-  
+ @layer components {
+    .benefit-icon {
+        @apply tw-grid tw-h-full tw-w-full tw-place-items-center tw-p-2;
+    }
+} 
