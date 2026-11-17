@@ -6,24 +6,11 @@ let headerWhiteBg = false
 let isHeaderCollapsed = window.innerWidth < RESPONSIVE_WIDTH
 const collapseBtn = document.getElementById("collapse-btn")
 const collapseHeaderItems = document.getElementById("collapsed-header-items")
-const themeToggle = document.getElementById("theme-toggle")
-
-const themeLabel = document.getElementById("theme-label")
-themeLabel.textContent = document.documentElement.dataset.theme === "light" ? "Dark theme" : "Light theme"
-themeToggle.addEventListener("click", () => {
-    const light = document.documentElement.dataset.theme !== "light"
-    document.documentElement.dataset.theme = light ? "light" : "dark"
-    themeLabel.textContent = light ? "Dark theme" : "Light theme"
-    try {
-        localStorage.setItem("theme", light ? "light" : "dark")
-    } catch (error) {}
-})
-
-
-
 function onHeaderClickOutside(e) {
 
-    if (!collapseHeaderItems.contains(e.target) && !themeToggle.contains(e.target)) {
+    if (!collapseHeaderItems.contains(e.target) && !collapseBtn.contains(e.target) &&
+        !document.getElementById("theme-toggle").contains(e.target) &&
+        !document.getElementById("language-toggle").contains(e.target)) {
         toggleHeader()
     }
 
@@ -39,7 +26,7 @@ function toggleHeader() {
         collapseBtn.classList.add("bi-x", "max-lg:tw-fixed")
         isHeaderCollapsed = false
 
-        setTimeout(() => window.addEventListener("click", onHeaderClickOutside), 1)
+        window.addEventListener("click", onHeaderClickOutside)
 
     } else {
         collapseHeaderItems.classList.remove("opacity-100")
@@ -53,15 +40,43 @@ function toggleHeader() {
 }
 
 function responsive() {
-    if (window.innerWidth > RESPONSIVE_WIDTH) {
+    const mobile = window.innerWidth < RESPONSIVE_WIDTH
+    if (mobile !== isMobile) {
+        collapseHeaderItems.classList.remove("opacity-100")
         collapseHeaderItems.style.width = ""
-
-    } else {
+        collapseBtn.classList.remove("bi-x", "max-lg:tw-fixed")
+        collapseBtn.classList.add("bi-list")
         isHeaderCollapsed = true
+        window.removeEventListener("click", onHeaderClickOutside)
+        isMobile = mobile
     }
+    resizeOpenFaqs()
 }
 
+let isMobile = window.innerWidth < RESPONSIVE_WIDTH
 window.addEventListener("resize", responsive)
+
+const faqAccordion = document.querySelectorAll('.faq-accordion')
+
+function resizeOpenFaqs() {
+    faqAccordion.forEach(btn => {
+        if (btn.classList.contains('active')) {
+            const content = btn.nextElementSibling
+            content.style.maxHeight = `${content.scrollHeight}px`
+        }
+    })
+}
+
+faqAccordion.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+        this.classList.toggle('active')
+        const content = this.nextElementSibling
+        const open = this.classList.contains('active')
+        content.style.padding = open ? '20px 18px' : '0px 18px'
+        content.style.maxHeight = open ? `${content.scrollHeight}px` : '0px'
+    })
+})
+document.addEventListener('languagechange', resizeOpenFaqs)
 
 
 /**
@@ -104,29 +119,6 @@ gsap.to("#dashboard", {
     }
 
 })
-
-const faqAccordion = document.querySelectorAll('.faq-accordion')
-
-faqAccordion.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-        this.classList.toggle('active')
-
-        // Toggle 'rotate' class to rotate the arrow
-        let content = this.nextElementSibling
-        
-        // content.classList.toggle('!tw-hidden')
-        if (content.style.maxHeight === '200px') {
-            content.style.maxHeight = '0px'
-            content.style.padding = '0px 18px'
-
-        } else {
-            content.style.maxHeight = '200px'
-            content.style.padding = '20px 18px'
-        }
-    })
-})
-
-
 
 // ------------- reveal section animations ---------------
 
@@ -192,7 +184,7 @@ function initShowcaseLightbox() {
                         <p style="font-size: 1.2rem; line-height: 1.6; color: #d1d5db;">${description}</p>
                     </div>
                 </div>
-                <button class="close-lightbox" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer;">×</button>
+                <button class="close-lightbox" aria-label="${document.documentElement.lang === 'fa' ? 'بستن' : 'Close'}" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer;">×</button>
             `;
             
             document.body.appendChild(lightbox);

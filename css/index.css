@@ -20,11 +20,32 @@ html {
     font-family: "Ubuntu", sans-serif;
 }
 
+html[lang="fa"] {
+    font-family: Tahoma, Arial, sans-serif;
+    line-height: 1.8;
+}
+
 header{
     /* background-color: #fff;
     color: #000; */
     color: #b1b1b1;
 }
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: none;
+    z-index: 50;
+}
+
+.header-controls .theme-toggle,
+.header-controls #language-toggle {
+    position: static;
+    white-space: nowrap;
+}
+
+header > a { flex: none; }
 
 .theme-toggle {
     display: inline-flex;
@@ -40,7 +61,7 @@ header{
 }
 
 .theme-toggle:hover { border-color: #d8b4fe; }
-.theme-toggle:focus-visible { outline: 2px solid #a855f7; outline-offset: 3px; }
+.theme-toggle:focus-visible, #language-toggle:focus-visible { outline: 2px solid #a855f7; outline-offset: 3px; }
 .theme-toggle svg { width: 1.125rem; height: 1.125rem; flex: none; }
 .theme-icon-moon, html[data-theme="light"] .theme-icon-sun { display: none; }
 html[data-theme="light"] .theme-icon-moon { display: block; }
@@ -214,7 +235,7 @@ header > .collapsible-header{
     padding: 15px 18px;
     width: 100%;
     border: none;
-    text-align: left;
+    text-align: start;
     outline: none;
     transition: height 0.4s;
 }
@@ -225,9 +246,15 @@ header > .collapsible-header{
     height: max-content;
     overflow: hidden;
     background-color: transparent;
-    text-align: justify;
+    text-align: start;
     max-height: 0px;
     transition: max-height 0.4s, padding 0.4s;
+}
+
+.faq-accordion i {
+    margin-left: 0;
+    margin-inline-start: auto;
+    padding-inline-start: 0.5rem;
 }
 
 .faq-accordion .active,
@@ -238,7 +265,8 @@ header > .collapsible-header{
 @media not all and (min-width: 1024px) {
     header .collapsible-header {
         position: fixed;
-        right: 0px;
+        right: auto;
+        inset-inline-end: 0;
         flex-direction: column;
         opacity: 0;
         height: 100vh;
@@ -259,12 +287,32 @@ header > .collapsible-header{
     .header-links{
         color: rgb(255, 255, 255);
     }
+
+    header > a { margin-inline-end: auto; }
+
+    header #collapse-btn {
+        position: static;
+        margin-inline-start: 0.5rem;
+        flex: none;
+    }
     
 }
 
 /* features section */
 .showcase-item {
     transition: all 0.3s ease;
+}
+
+.benefit-card,
+.showcase-item {
+    height: auto;
+    min-height: 400px;
+    max-width: 100%;
+}
+
+.benefit-card > .border-gradient,
+.showcase-item > img {
+    flex-shrink: 0;
 }
 
 .showcase-item:hover {
