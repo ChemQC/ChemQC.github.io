@@ -178,14 +178,20 @@ function initShowcaseLightbox() {
             // Lightbox content
             lightbox.innerHTML = `
                 <div class="lightbox-content" style="max-width: 800px; max-height: 90vh; overflow-y: auto;">
-                    <img src="${img.src}" alt="${img.alt}" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 20px;">
+                    <img style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 20px;">
                     <div style="color: white; text-align: center;">
-                        <h3 style="font-size: 2rem; margin-bottom: 1rem; color: #e5e7eb;">${title}</h3>
-                        <p style="font-size: 1.2rem; line-height: 1.6; color: #d1d5db;">${description}</p>
+                        <h3 style="font-size: 2rem; margin-bottom: 1rem; color: #e5e7eb;"></h3>
+                        <p style="font-size: 1.2rem; line-height: 1.6; color: #d1d5db;"></p>
                     </div>
                 </div>
-                <button class="close-lightbox" aria-label="${document.documentElement.lang === 'fa' ? 'بستن' : 'Close'}" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer;">×</button>
+                <button class="close-lightbox" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer;">×</button>
             `;
+            const lightboxImage = lightbox.querySelector('img');
+            lightboxImage.src = img.src;
+            lightboxImage.alt = img.alt;
+            lightbox.querySelector('h3').textContent = title;
+            lightbox.querySelector('p').textContent = description;
+            lightbox.querySelector('.close-lightbox').setAttribute('aria-label', document.getElementById('action').getAttribute('data-lightbox-close'));
             
             document.body.appendChild(lightbox);
             

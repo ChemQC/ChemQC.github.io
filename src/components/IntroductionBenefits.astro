@@ -1,12 +1,15 @@
+---
+import { en } from '../i18n'
+---
 <section id="intro"
 		class="tw-relative tw-flex tw-min-h-[80vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6">
 		<div class="tw-mt-8 tw-flex tw-flex-col tw-place-items-center tw-gap-5">
 			<div class="reveal-up tw-mt-5 tw-flex tw-flex-col tw-gap-3 tw-text-center">
-				<h2 class="tw-text-4xl tw-font-medium tw-text-gray-200 max-md:tw-text-2xl" data-fa="چالش آزمون پلیمر">
-					The Polymer Testing Challenge
+				<h2 class="tw-text-4xl tw-font-medium tw-text-gray-200 max-md:tw-text-2xl" data-i18n="intro.title">
+					{en['intro.title']}
 				</h2>
-				<p class="tw-text-xl tw-text-gray-300 max-md:tw-text-lg" data-fa="تبدیل داده‌های پیچیده آزمون پلیمر به بینش‌های کاربردی">
-					Transforming complex polymer testing data into actionable insights
+				<p class="tw-text-xl tw-text-gray-300 max-md:tw-text-lg" data-i18n="intro.subtitle">
+					{en['intro.subtitle']}
 				</p>
 			</div>
 
@@ -29,20 +32,10 @@
 					</div>
 					<div class="tw-flex tw-flex-col tw-gap-4">
 						<h3
-							class="tw-text-3xl tw-font-normal tw-text-gray-200 max-md:tw-text-2xl" data-fa="مسئله">
-							The
-							Problem</h3>
-						<div class="tw-text-lg tw-text-gray-300 max-md:tw-text-base" data-fa="کارخانه‌های پلیمری در ثبت دستی آزمون‌هایی مانند ⁦MFI⁩، ⁦OIT⁩ و تنش تسلیم با قلم و کاغذ با مشکل مواجه‌اند. حاصل این روش داده‌های بدون ساختاری است که مدیریت، تحلیل و توسعه آن‌ها دشوار است و به ناکارآمدی، خطا و از دست رفتن بینش‌های ارزشمند منجر می‌شود.">
-							Polymer plants struggle with storing manual testing processes
-							(MFI, OIT,
-							Yield
-							Stress)
-							using pen and paper, creating unstructured data that's difficult
-							to
-							manage,
-							analyze, and scale. This leads to inefficiencies, errors, and
-							missed
-							insights.
+							class="tw-text-3xl tw-font-normal tw-text-gray-200 max-md:tw-text-2xl" data-i18n="intro.problem.title">
+							{en['intro.problem.title']}</h3>
+						<div class="tw-text-lg tw-text-gray-300 max-md:tw-text-base" data-i18n="intro.problem.description">
+							{en['intro.problem.description']}
 						</div>
 					</div>
 				</div>
@@ -62,17 +55,10 @@
 					</div>
 					<div class="tw-flex tw-flex-col tw-gap-4">
 						<h3
-							class="tw-text-3xl tw-font-normal tw-text-gray-200 max-md:tw-text-2xl" data-fa="راهکار ما">
-							Our
-							Solution</h3>
-						<div class="tw-text-lg tw-text-gray-300 max-md:tw-text-base" data-fa="یک سامانه تخصصی ⁦LIMS⁩ که داده‌های پیچیده آزمون پلیمر را در پایگاه داده‌ای ساختاریافته ذخیره می‌کند و مدیریت سازمان‌یافته، جست‌وجوپذیر و قابل تحلیل داده‌ها را برای کارخانه شما فراهم می‌سازد. سوابق کاغذی پراکنده را به دارایی‌های دیجیتال ساختاریافته تبدیل کنید.">
-							A specialized LIMS that stores complex polymer test data in
-							structured
-							database,
-							providing organized, searchable, and analyzable data management
-							for your
-							plant.
-							Transform chaotic paper records into structured digital assets.
+							class="tw-text-3xl tw-font-normal tw-text-gray-200 max-md:tw-text-2xl" data-i18n="intro.solution.title">
+							{en['intro.solution.title']}</h3>
+						<div class="tw-text-lg tw-text-gray-300 max-md:tw-text-base" data-i18n="intro.solution.description">
+							{en['intro.solution.description']}
 						</div>
 					</div>
 				</div>
@@ -92,16 +78,10 @@
 					</div>
 					<div class="tw-flex tw-flex-col tw-gap-4">
 						<h3
-							class="tw-text-3xl tw-font-normal tw-text-gray-200 max-md:tw-text-2xl" data-fa="نتیجه">
-							The
-							Impact</h3>
-						<div class="tw-text-lg tw-text-gray-300 max-md:tw-text-base" data-fa="زمان صرف‌شده برای مدیریت داده را به‌طور چشمگیری کاهش دهید، خطاهای دستی را حذف کنید و از داده‌های آزمون پلیمر خود در لحظه بینش کسب کنید. با اطلاعات ساختاریافته و در دسترس، سریع‌تر تصمیم‌های آگاهانه بگیرید.">
-							Reduce data management significantly, eliminate manual errors,
-							and gain
-							real-time insights from your polymer testing data. Make informed
-							decisions
-							faster with structured, accessible information at your
-							fingertips.
+							class="tw-text-3xl tw-font-normal tw-text-gray-200 max-md:tw-text-2xl" data-i18n="intro.impact.title">
+							{en['intro.impact.title']}</h3>
+						<div class="tw-text-lg tw-text-gray-300 max-md:tw-text-base" data-i18n="intro.impact.description">
+							{en['intro.impact.description']}
 						</div>
 					</div>
 				</div>
@@ -114,8 +94,8 @@
 		class="tw-relative tw-flex tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6">
 		<div class="tw-mt-8 tw-flex tw-flex-col tw-place-items-center tw-gap-5">
 			<div class="reveal-up tw-mt-5 tw-flex tw-flex-col tw-gap-3 tw-text-center">
-				<h2 class="tw-text-4xl tw-font-medium tw-text-gray-200 max-md:tw-text-3xl" data-fa="مزایای کلیدی">
-					Key benefits
+				<h2 class="tw-text-4xl tw-font-medium tw-text-gray-200 max-md:tw-text-3xl" data-i18n="benefits.title">
+					{en['benefits.title']}
 				</h2>
 			</div>
 			<div
@@ -132,13 +112,10 @@
 						</div>
 					</div>
 					<div class="tw-flex tw-flex-col tw-gap-4 tw-p-2">
-						<h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl" data-fa="مدیریت پایگاه داده">
-							Database Management
+						<h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl" data-i18n="benefits.database.title">
+							{en['benefits.database.title']}
 						</h3>
-						<div class="tw-text-gray-300" data-fa="چندین پایگاه داده ایجاد و مدیریت کنید تا داده‌های آزمایشگاه را بر اساس سال، خط تولید یا بخش سازمان‌دهی کنید و برای عملیات رو به رشد، عملکرد بهینه و تفکیک منظم داده‌ها را تضمین کنید.">Create and manage multiple databases to
-							organize your laboratory data by year, product line, or
-							department, ensuring optimal performance and streamlined data
-							separation for growing operations.</div>
+						<div class="tw-text-gray-300" data-i18n="benefits.database.description">{en['benefits.database.description']}</div>
 					</div>
 				</div>
 
@@ -154,12 +131,10 @@
 						</div>
 					</div>
 					<div class="tw-flex tw-flex-col tw-gap-4 tw-p-2">
-						<h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl" data-fa="توسعه قابلیت‌های سفارشی">
-							Custom Feature Development
+						<h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl" data-i18n="benefits.custom.title">
+							{en['benefits.custom.title']}
 						</h3>
-						<div class="tw-text-gray-300" data-fa="تیم توسعه ما نرم‌افزار را با گردش کار منحصربه‌فرد آزمایشگاه شما تطبیق می‌دهد تا با نیازهای عملیاتی خاص شما کاملاً هماهنگ باشد.">Our development team adapts the software
-							to your unique laboratory workflows, ensuring perfect alignment
-							with your specific operational requirements.</div>
+						<div class="tw-text-gray-300" data-i18n="benefits.custom.description">{en['benefits.custom.description']}</div>
 					</div>
 				</div>
 
@@ -175,12 +150,10 @@
 						</div>
 					</div>
 					<div class="tw-flex tw-flex-col tw-gap-4 tw-p-2">
-						<h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl" data-fa="پشتیبان‌گیری خودکار">
-							Automated Backup
+						<h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl" data-i18n="benefits.backup.title">
+							{en['benefits.backup.title']}
 						</h3>
-						<div class="tw-text-gray-300" data-fa="با پشتیبان‌گیری خودکار محلی در بازه‌های دلخواه، از داده‌های حیاتی آزمایشگاه محافظت کنید و بدون وابستگی به اینترنت از دست رفتن داده‌ها را به صفر برسانید.">Protect your critical laboratory data with
-							automatic local backups at custom intervals, ensuring zero data
-							loss without internet dependency.</div>
+						<div class="tw-text-gray-300" data-i18n="benefits.backup.description">{en['benefits.backup.description']}</div>
 					</div>
 				</div>
 

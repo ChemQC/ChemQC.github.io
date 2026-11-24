@@ -1,6 +1,7 @@
 ---
 import '../../css/tailwind.css';
 import '../../css/index.css';
+import { en } from '../i18n';
 ---
 <!doctype html>
 <html lang="en">
@@ -12,11 +13,11 @@ import '../../css/index.css';
 			if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light';
 		} catch (error) {}
 	</script>
-	<title data-fa="کِم کیوسی - مدیریت دقیق داده‌های آزمایشگاهی">ChemQC - Precision Laboratory Data Management</title>
-	<meta name="description" content="ChemQC introduction, LIMS system for storing test results of polymer plants" data-fa-content="معرفی کِم کیوسی، سامانه مدیریت اطلاعات آزمایشگاهی برای ذخیره نتایج آزمون کارخانه‌های پلیمری" />
+	<title data-i18n="meta.title">{en['meta.title']}</title>
+	<meta name="description" content={en['meta.description']} data-i18n-content="meta.description" />
 	<link rel="shortcut icon" href="./assets/logo/logo.png" type="image/x-icon" />
-	<meta property="og:title" content="ChemQC - Precision Laboratory Data Management" data-fa-content="کِم کیوسی - مدیریت دقیق داده‌های آزمایشگاهی" />
-	<meta property="og:description" content="a software solution based on LIMS systems for storing test results of polymer plants" data-fa-content="راهکاری مبتنی بر سامانه مدیریت اطلاعات آزمایشگاهی برای ذخیره نتایج آزمون کارخانه‌های پلیمری" />
+	<meta property="og:title" content={en['meta.title']} data-i18n-content="meta.title" />
+	<meta property="og:description" content={en['meta.ogDescription']} data-i18n-content="meta.ogDescription" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://ChemQC.ir" />
 	<meta property="og:image" content="" />
@@ -27,13 +28,13 @@ import '../../css/index.css';
 </head>
 <body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-black tw-text-white">
 	<slot />
-	<script is:inline src="./preferences.js"></script>
-	<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"
+	<script>import '../scripts/preferences';</script>
+	<script is:inline defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"
 		integrity="sha512-B1lby8cGcAUU3GR+Fd809/ZxgHbfwJMp0jLTVfHiArTuUt++VqSlJpaJvhNtRf3NERaxDNmmxkdx2o+aHd4bvw=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"
+	<script is:inline defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"
 		integrity="sha512-AY2+JxnBETJ0wcXnLPCcZJIJx0eimyhz3OJ55k2Jx4RtYC+XdIi2VtJQ+tP3BaTst4otlGG1TtPJ9fKrAUnRdQ=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script is:inline src="./index.js"></script>
+	<script is:inline defer src="./index.js"></script>
 </body>
 </html>

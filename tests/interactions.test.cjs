@@ -95,3 +95,54 @@ test('drawer normalizes at 1024px and opens cleanly when returning to mobile', (
     assert.equal(page.drawer.style.width, '0vw');
     assert.equal(page.windowHandlers.click, undefined);
 });
+
+test('lightbox assigns hostile copy safely and reads the current section close label', () => {
+    const title = '<img src=x onerror="title()">';
+    const description = '</p><script>description()</script>';
+    const alt = '" onerror="alt()';
+    const closeLabels = ['" autofocus onfocus="close()', '<img src=x onerror="closeAgain()">'];
+    let closeLabel = closeLabels[0];
+    const image = {
+        src: 'https://example.com/image.png', alt,
+        getAttribute: name => ({ 'data-lightbox-title': title, 'data-lightbox-description': description })[name],
+    };
+    const item = element();
+    item.querySelector = selector => selector === '.showcase-image' ? image : null;
+    const handlers = {};
+    let overlay;
+    const document = {
+        getElementById: id => id === 'action' ? { getAttribute: name => name === 'data-lightbox-close' ? closeLabel : null } : element(),
+        querySelectorAll: selector => selector === '.showcase-item' ? [item] : [],
+        addEventListener: (name, handler) => { handlers[name] = handler; },
+        removeEventListener() {},
+        createElement() {
+            const lightbox = element();
+            const close = element();
+            close.setAttribute = (name, value) => { close[name] = value; };
+            lightbox.nodes = { img: {}, h3: {}, p: {}, '.close-lightbox': close };
+            lightbox.querySelector = selector => lightbox.nodes[selector];
+            return lightbox;
+        },
+        body: {
+            appendChild(node) { overlay = node; },
+            removeChild(node) { assert.equal(node, overlay); overlay = null; },
+        },
+    };
+    const window = { innerWidth: 1200, addEventListener() {}, removeEventListener() {} };
+    const gsap = { registerPlugin() {}, to() {}, utils: { toArray: () => [] } };
+    vm.runInNewContext(readFileSync('public/index.js', 'utf8'), { document, window, gsap, ScrollTrigger: {} });
+    handlers.DOMContentLoaded();
+
+    for (const label of closeLabels) {
+        closeLabel = label;
+        item.click();
+        for (const value of [title, description, alt, label]) assert.ok(!overlay.innerHTML.includes(value));
+        assert.equal(overlay.nodes.img.src, image.src);
+        assert.equal(overlay.nodes.img.alt, alt);
+        assert.equal(overlay.nodes.h3.textContent, title);
+        assert.equal(overlay.nodes.p.textContent, description);
+        assert.equal(overlay.nodes['.close-lightbox']['aria-label'], label);
+        overlay.nodes['.close-lightbox'].click();
+        assert.equal(overlay, null);
+    }
+});
